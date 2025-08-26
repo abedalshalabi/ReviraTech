@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="forkliftGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Forklift Body -->
+  <rect x="100" y="180" width="200" height="80" fill="url(#forkliftGradient)" rx="10"/>
+  
+  <!-- Driver Cabin -->
+  <rect x="120" y="140" width="80" height="40" fill="#1e293b" rx="5"/>
+  <rect x="125" y="145" width="70" height="20" fill="#64748b"/>
+  <rect x="125" y="170" width="70" height="5" fill="#374151"/>
+  
+  <!-- Battery Compartment -->
+  <rect x="220" y="140" width="60" height="40" fill="#475569" rx="3"/>
+  <rect x="225" y="145" width="50" height="30" fill="#64748b"/>
+  <circle cx="250" cy="160" r="3" fill="#10b981"/>
+  <circle cx="250" cy="170" r="3" fill="#10b981"/>
+  
+  <!-- Forks -->
+  <rect x="80" y="200" width="8" height="60" fill="#475569"/>
+  <rect x="312" y="200" width="8" height="60" fill="#475569"/>
+  <rect x="75" y="260" width="15" height="5" fill="#1e293b"/>
+  <rect x="310" y="260" width="15" height="5" fill="#1e293b"/>
+  
+  <!-- Mast -->
+  <rect x="150" y="100" width="100" height="20" fill="#64748b"/>
+  <rect x="160" y="80" width="80" height="20" fill="#475569"/>
+  <rect x="170" y="60" width="60" height="20" fill="#374151"/>
+  
+  <!-- Load Backrest -->
+  <rect x="320" y="140" width="10" height="80" fill="#64748b"/>
+  <rect x="315" y="130" width="20" height="10" fill="#475569"/>
+  
+  <!-- Wheels -->
+  <circle cx="120" cy="270" r="15" fill="#1e293b"/>
+  <circle cx="120" cy="270" r="8" fill="#64748b"/>
+  <circle cx="280" cy="270" r="15" fill="#1e293b"/>
+  <circle cx="280" cy="270" r="8" fill="#64748b"/>
+  
+  <!-- Steering Wheel -->
+  <circle cx="160" cy="160" r="8" fill="#1e293b"/>
+  <circle cx="160" cy="160" r="4" fill="#64748b"/>
+  
+  <!-- Control Panel -->
+  <rect x="130" y="150" width="40" height="15" fill="#374151" rx="2"/>
+  <rect x="135" y="153" width="30" height="3" fill="#10b981"/>
+  <rect x="135" y="158" width="20" height="3" fill="#a5c442"/>
+  <rect x="135" y="163" width="10" height="3" fill="#ef4444"/>
+  
+  <!-- Safety Features -->
+  <circle cx="350" cy="160" r="6" fill="#ef4444"/>
+  <circle cx="350" cy="160" r="3" fill="#dc2626"/>
+  
+  <!-- Warning Lights -->
+  <circle cx="110" cy="130" r="3" fill="#a5c442"/>
+<circle cx="290" cy="130" r="3" fill="#a5c442"/>
+  
+  <!-- Load -->
+  <rect x="330" y="160" width="40" height="50" fill="#789c32" rx="2"/>
+<rect x="335" y="165" width="30" height="40" fill="#a5c442" rx="1"/>
+  
+  <!-- Labels -->
+  <text x="200" y="250" text-anchor="middle" font-family="Arial" font-size="14" fill="#1e293b">Electric Forklift</text>
+  <text x="200" y="270" text-anchor="middle" font-family="Arial" font-size="12" fill="#64748b">3 Ton Capacity</text>
+</svg>

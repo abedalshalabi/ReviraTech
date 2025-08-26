@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5a7a28;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#789c32;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8fb03a;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a5c442;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#789c32;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="400" fill="url(#heroGradient)"/>
+  
+  <!-- Industrial Pattern -->
+  <g opacity="0.1">
+    <circle cx="100" cy="100" r="20" fill="white"/>
+    <circle cx="300" cy="150" r="15" fill="white"/>
+    <circle cx="500" cy="80" r="25" fill="white"/>
+    <circle cx="700" cy="200" r="18" fill="white"/>
+    <circle cx="900" cy="120" r="22" fill="white"/>
+    <circle cx="1100" cy="180" r="16" fill="white"/>
+  </g>
+  
+  <!-- Main Machine -->
+  <g transform="translate(800, 200)">
+    <!-- Machine Base -->
+    <rect x="0" y="100" width="200" height="40" fill="#374151" rx="5"/>
+    
+    <!-- Machine Body -->
+    <rect x="20" y="60" width="160" height="40" fill="#64748b" rx="3"/>
+    
+    <!-- Control Panel -->
+    <rect x="30" y="70" width="80" height="20" fill="#1e293b" rx="2"/>
+    <circle cx="40" cy="80" r="2" fill="#10b981"/>
+    <circle cx="50" cy="80" r="2" fill="#a5c442"/>
+    <circle cx="60" cy="80" r="2" fill="#ef4444"/>
+    
+    <!-- Working Area -->
+    <rect x="120" y="70" width="50" height="20" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+    
+    <!-- Glow Effect -->
+    <circle cx="145" cy="80" r="15" fill="url(#glowGradient)"/>
+  </g>
+  
+  <!-- Text Content -->
+  <g fill="white">
+    <text x="100" y="120" font-family="Arial" font-size="48" font-weight="bold">آلات ومعدات صناعية</text>
+    <text x="100" y="160" font-family="Arial" font-size="24">عالية الجودة</text>
+    <text x="100" y="200" font-family="Arial" font-size="16">نقدم أفضل الآلات والمعدات الصناعية مع ضمان الجودة والخدمة المتميزة</text>
+  </g>
+  
+  <!-- Call to Action -->
+  <rect x="100" y="250" width="150" height="40" fill="#789c32" rx="20"/>
+  <text x="175" y="275" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="white">تصفح المنتجات</text>
+</svg>

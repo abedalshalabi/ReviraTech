@@ -1,0 +1,191 @@
+Translation Keys Audit Report
+==============================
+
+Keys found in Blade templates:
+
+1. server_error
+2. server_error_title
+3. server_error_message
+4. back_to_home
+5. contact_us
+6. support_team_message
+7. watch_video
+8. featured_categories
+9. view_products
+10. view_details
+11. view_all
+12. latest_products
+13. latest_news
+14. our_agents
+15. website
+16. about_us
+17. about_us_description
+18. about_us_subtitle
+19. our_story
+20. about_company_intro
+21. about_company_foundation
+22. about_company_partnerships
+23. our_vision
+24. company_vision
+25. our_mission
+26. company_mission
+27. our_values
+28. company_values_title
+29. quality
+30. value_quality
+31. innovation
+32. value_innovation
+33. reliability
+34. value_relationships
+35. collaboration
+36. value_teamwork
+37. years_of_experience
+38. satisfied_clients
+39. completed_projects
+40. technical_support
+41. our_team
+42. team_title
+43. sales_team
+44. team_sales
+45. technical_team
+46. team_technical
+47. customer_service
+48. team_support
+49. certificates_and_accreditations
+50. certifications_title
+51. ISO 9001
+52. quality_management
+53. ISO 14001
+54. environmental_management
+55. OHSAS 18001
+56. health_safety
+57. CE Mark
+58. ce_certification
+59. SASO
+60. saso_certification
+61. UL Listed
+62. ul_certification
+63. want_to_know_more
+64. contact_cta
+65. browse_products
+66. quick_links
+67. home
+68. products
+69. news
+70. agents
+71. categories
+72. subscribe_newsletter
+73. email
+74. subscribe
+75. follow_us
+76. all_rights_reserved
+77. privacy_policy
+78. terms_of_use
+79. sitemap
+80. agents_description
+81. agents_intro
+82. no_agents_found
+83. agents_coming_soon
+84. become_agent_title
+85. become_agent_description
+86. news_description
+87. news_intro
+88. read_more
+89. no_news_found
+90. news_coming_soon
+91. page_not_found
+92. page_not_found_title
+93. page_not_found_message
+94. search_our_site
+95. search_products_placeholder
+96. product_code
+97. model
+98. brand
+99. country_of_origin
+100. request_quote
+101. download_catalog
+102. share_product
+103. description
+104. specifications
+105. features
+106. applications
+107. video
+108. warranty
+109. no_specifications_available
+110. no_features_available
+111. no_applications_available
+112. similar_products
+113. products_description
+114. products_intro
+115. search
+116. category
+117. all_categories
+118. price_range
+119. from
+120. to
+121. sort
+122. newest
+123. price_low
+124. price_high
+125. name
+126. most_popular
+127. display
+128. grid_view
+129. list_view
+130. apply_filter
+131. reset
+132. showing
+133. of
+134. results
+135. no_products_found
+136. try_different_filters
+137. view_all_products
+138. views
+139. share_article
+140. related_news
+141. search
+142. contact_us_description
+143. contact_us_help_text
+144. message_us
+145. name
+146. phone
+147. company
+148. subject
+149. select_subject
+150. general_inquiry
+151. business_partnership
+152. other
+153. message
+154. send_message
+155. contact_information
+156. address
+157. working_hours
+158. our_location
+159. please_fill_all_required_fields
+160. please_enter_valid_email
+
+Missing Keys Analysis:
+=====================
+
+Keys missing from English (en.json):
+- description
+
+Keys missing from Arabic (ar.json):
+- name (appears multiple times but missing from ar.json)
+- email (appears multiple times but missing from ar.json)
+- company
+- select_subject
+- general_inquiry
+- business_partnership
+- other
+- contact_consultation
+- help_find_solutions
+- our_story
+- company_journey
+- discover_mission
+- newsletter_subscribe_consent
+- send_message
+- contact_information
+- description
+
+Note: Some keys appear to have duplicates or variations in the files.

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="weldingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="sparkGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a5c442;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#789c32;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Machine Base -->
+  <rect x="50" y="220" width="300" height="50" fill="#374151" rx="5"/>
+  
+  <!-- Machine Body -->
+  <rect x="70" y="140" width="260" height="80" fill="#64748b" rx="3"/>
+  
+  <!-- Control Panel -->
+  <rect x="80" y="150" width="120" height="50" fill="#1e293b" rx="3"/>
+  <rect x="90" y="160" width="100" height="8" fill="#10b981"/>
+  <rect x="90" y="175" width="80" height="8" fill="#789c32"/>
+  <rect x="90" y="190" width="60" height="8" fill="#ef4444"/>
+  
+  <!-- Welding Gun -->
+  <rect x="220" y="160" width="15" height="40" fill="#475569"/>
+  <rect x="225" y="150" width="5" height="10" fill="#1e293b"/>
+  
+  <!-- Welding Wire -->
+  <line x1="232" y1="170" x2="232" y2="200" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="232" cy="200" r="3" fill="#64748b"/>
+  
+  <!-- Welding Arc -->
+  <circle cx="232" cy="160" r="8" fill="url(#sparkGradient)"/>
+  <circle cx="232" cy="160" r="4" fill="#a5c442"/>
+  
+  <!-- Work Clamp -->
+  <rect x="320" y="170" width="20" height="30" fill="#475569"/>
+  <rect x="315" y="175" width="30" height="5" fill="#1e293b"/>
+  <rect x="315" y="185" width="30" height="5" fill="#1e293b"/>
+  
+  <!-- Gas Cylinder -->
+  <rect x="50" y="120" width="30" height="80" fill="#64748b" rx="5"/>
+  <rect x="45" y="110" width="40" height="15" fill="#374151" rx="3"/>
+  <circle cx="65" cy="117" r="3" fill="#10b981"/>
+  
+  <!-- Safety Features -->
+  <rect x="60" y="100" width="280" height="25" fill="#94a3b8" opacity="0.6"/>
+  <circle cx="350" cy="160" r="6" fill="#ef4444"/>
+  
+  <!-- Labels -->
+  <text x="200" y="250" text-anchor="middle" font-family="Arial" font-size="14" fill="#1e293b">TIG Welding Machine</text>
+  <text x="200" y="270" text-anchor="middle" font-family="Arial" font-size="12" fill="#64748b">Precision Welding</text>
+</svg>
