@@ -1,25 +1,47 @@
-name: Deploy to cPanel
+name: Deploy Laravel/React to cPanel via FTP
 
 on:
   push:
     branches:
-      - main   # التحديث يشتغل فقط لما تعمل push على main
+      - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ نسخ ملفات المشروع
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.CPANEL_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H reviratech.com >> ~/.ssh/known_hosts
+      # 2️⃣ تثبيت Node.js (لمشاريع React)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      - name: Deploy to cPanel
+      # 3️⃣ تثبيت dependencies و build (React)
+      - name: Install dependencies and build (React)
         run: |
-            ssh revirqzw@reviratech.com "cd ~/public_html && git pull origin main"
+          if [ -f package.json ]; then
+            npm install
+            npm run build
+          fi
+
+      # 4️⃣ تثبيت PHP dependencies (Laravel)
+      - name: Install PHP dependencies (Laravel)
+        run: |
+          if [ -f composer.json ]; then
+            composer install --no-dev --prefer-dist --optimize-autoloader
+          fi
+
+      # 5️⃣ رفع الملفات عبر FTP/SFTP
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./         # مجلد المشروع
+          server-dir: /public_html/   # مسار الموقع على السيرفر
+          protocol: ftps        # أو sftp حسب استضافتك
