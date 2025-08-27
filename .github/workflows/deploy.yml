@@ -52,3 +52,5 @@ jobs:
           local-dir: ./         # مجلد المشروع
           server-dir: ./   # مسار الموقع على السيرفر
           protocol: ftps        # أو sftp حسب استضافتك
+          state-name: .ftp-deploy-sync-state.json
+
