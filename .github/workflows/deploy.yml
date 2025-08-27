@@ -50,5 +50,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./         # مجلد المشروع
-          server-dir: /public_html/   # مسار الموقع على السيرفر
+          server-dir: ./   # مسار الموقع على السيرفر
           protocol: ftps        # أو sftp حسب استضافتك
