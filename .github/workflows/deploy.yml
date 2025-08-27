@@ -1,0 +1,25 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches:
+      - main   # التحديث يشتغل فقط لما تعمل push على main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.CPANEL_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H reviratech.com >> ~/.ssh/known_hosts
+
+      - name: Deploy to cPanel
+        run: |
+            ssh revirqzw@reviratech.com "cd ~/public_html && git pull origin main"
