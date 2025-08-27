@@ -106,6 +106,7 @@
                                     <div class="card product-card h-100">
                                         @if($product->image)
                                             <img src="{{ $product->image }}" 
+                                            
                                                  class="card-img-top" alt="{{ $product->name }}" loading="lazy">
                                         @else
                                             <div class="card-img-top bg-light d-flex align-items-center justify-content-center product-card-placeholder">
