@@ -58,7 +58,7 @@ sync.log
 ehthumbs.db
 
 # Composer
-composer.phar
+#composer.phar
 
 # PHPUnit
 /phpunit.xml
