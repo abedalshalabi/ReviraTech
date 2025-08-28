@@ -29,7 +29,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    @if($directions === 'rtl')
+        <link href="{{ asset('css/bootstrap.rtl.min.css') }}" rel="stylesheet">
+    @else
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    @endif
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/google-fonts.css') }}" rel="stylesheet">

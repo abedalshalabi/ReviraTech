@@ -31,17 +31,19 @@ class ViewServiceProvider extends ServiceProvider
                 return;
             }
             
+            $currentLocale = app()->getLocale();
+            
             $view->with([
                 'settings' => cache()->remember('view_composer.settings', 7200, function () {
                     return Setting::getAllAsArray();
                 }),
-                'languages' => cache()->remember('view_composer.languages', 7200, function () {
+                'languages' => cache()->remember("view_composer.languages.{$currentLocale}", 7200, function () {
                     return LanguageHelper::getLanguageSwitcherData();
                 }),
-                'isRTL' => cache()->remember('view_composer.is_rtl', 7200, function () {
+                'isRTL' => cache()->remember("view_composer.is_rtl.{$currentLocale}", 7200, function () {
                     return LanguageHelper::isRTL();
                 }),
-                'directions' => cache()->remember('view_composer.directions', 7200, function () {
+                'directions' => cache()->remember("view_composer.directions.{$currentLocale}", 7200, function () {
                     return LanguageHelper::getDirection();
                 }),
                 'mainCategories' => cache()->remember('view_composer.main_categories', 7200, function () {

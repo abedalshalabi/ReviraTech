@@ -275,7 +275,59 @@ html[dir="rtl"] .hero-buttons {
 
 /* Mission section specific centering */
 html[dir="rtl"] .mission-content {
-    text-align: center !important;
+    text-align: right !important;
+}
+
+html[dir="rtl"] .mission-content h3,
+html[dir="rtl"] .mission-content p {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .mission-content .d-flex {
+    flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .mission-content .me-3 {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}
+
+/* RTL Carousel Controls */
+html[dir="rtl"] .carousel-control-prev {
+    left: auto !important;
+    right: 30px !important;
+}
+
+html[dir="rtl"] .carousel-control-next {
+    right: auto !important;
+    left: 30px !important;
+}
+
+/* RTL Carousel Icons - Flip the arrow directions */
+html[dir="rtl"] .carousel-control-prev-icon {
+    transform: scaleX(-1) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='m11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e") !important;
+}
+
+html[dir="rtl"] .carousel-control-next-icon {
+    transform: scaleX(-1) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+/* RTL Slide Animation */
+html[dir="rtl"] .carousel-item.active {
+    animation: slideInFromLeft 0.8s ease-out;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* Enhanced Carousel Indicators */
@@ -611,9 +663,20 @@ html[dir="rtl"] .mission-content {
     .carousel-control-prev {
         left: 15px;
     }
-    
+
     .carousel-control-next {
         right: 15px;
+    }
+    
+    /* RTL Mobile Carousel Controls */
+    html[dir="rtl"] .carousel-control-prev {
+        left: auto !important;
+        right: 15px !important;
+    }
+    
+    html[dir="rtl"] .carousel-control-next {
+        right: auto !important;
+        left: 15px !important;
     }
     
     .carousel-indicators {
@@ -702,6 +765,17 @@ html[dir="rtl"] .mission-content {
     .carousel-control-next {
         width: 40px;
         height: 40px;
+    }
+    
+    /* RTL Small Mobile Carousel Controls */
+    html[dir="rtl"] .carousel-control-prev {
+        left: auto !important;
+        right: 15px !important;
+    }
+    
+    html[dir="rtl"] .carousel-control-next {
+        right: auto !important;
+        left: 15px !important;
     }
     
     .carousel-indicators {
@@ -1497,9 +1571,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* RTL Search Form Layout */
-[dir="rtl"] .d-flex {
-    flex-direction: row-reverse;
-}
+
 
 [dir="rtl"] .me-4 {
     margin-right: 0;
