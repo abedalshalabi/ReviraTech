@@ -15,32 +15,32 @@ jobs:
         uses: actions/checkout@v3
 
       # 2️⃣ تثبيت Node.js (لمشاريع React)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+      #- name: Setup Node.js
+      #  uses: actions/setup-node@v3
+      #  with:
+      #    node-version: '18'
 
       # 3️⃣ تثبيت dependencies و build (React)
-      - name: Install dependencies and build (React)
-        run: |
-          if [ -f package.json ]; then
-            npm install
-            npm run build
-          fi
+      #- name: Install dependencies and build (React)
+      # run: |
+      #  if [ -f package.json ]; then
+      #      npm install
+      #      npm run build
+      #    fi
       # 2️⃣ لو المشروع Laravel حضّر مجلدات الكاش
-      - name: Prepare Laravel cache directories
-        run: |
-          if [ -f artisan ]; then
-            mkdir -p bootstrap/cache
-            mkdir -p storage/framework/{cache,sessions,views}
-          fi
+      #- name: Prepare Laravel cache directories
+      #  run: |
+      #    if [ -f artisan ]; then
+      #     mkdir -p bootstrap/cache
+      #      mkdir -p storage/framework/{cache,sessions,views}
+      #    fi
 
       # 4️⃣ تثبيت PHP dependencies (Laravel)
-      - name: Install PHP dependencies (Laravel)
-        run: |
-          if [ -f composer.json ]; then
-            composer install --no-dev --prefer-dist --optimize-autoloader
-          fi
+      #- name: Install PHP dependencies (Laravel)
+      #  run: |
+      #    if [ -f composer.json ]; then
+      #      composer install --no-dev --prefer-dist --optimize-autoloader
+      #    fi
 
       # 5️⃣ رفع الملفات عبر FTP/SFTP
       - name: FTP Deploy
@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./         # مجلد المشروع
-          server-dir: ./   # مسار الموقع على السيرفر
+          server-dir: ./reviratech   # مسار الموقع على السيرفر
           protocol: ftps        # أو sftp حسب استضافتك
           state-name: .ftp-deploy-sync-state.json
 
