@@ -30,12 +30,12 @@
                     <div class="product-gallery">
                         @if(count($product->images) > 0)
                             <!-- Main Image Display -->
-                            <div class="main-image-container mb-3 position-relative">
+                            <div class="main-image-container mb-3 position-relative d-flex align-items-center justify-content-center" style="height: 400px; background: #f8f9fa; border-radius: 8px;">
                                 <img id="mainProductImage" 
                                      src="{{ $product->images[0]['url'] }}" 
-                                     class="img-fluid w-100 rounded shadow-sm main-product-image" 
+                                     class="img-fluid rounded shadow-sm main-product-image" 
                                      alt="{{ $product->images[0]['alt'] }}"
-                                     style="height: 400px; object-fit: cover; cursor: zoom-in;">
+                                     style="max-height: 100%; max-width: 100%; object-fit: contain; cursor: zoom-in;">
                                 
                                 <!-- Zoom Lens -->
                                 <div id="zoomLens" class="zoom-lens" style="display: none;"></div>
@@ -47,9 +47,9 @@
                             <!-- Thumbnail Gallery -->
                             @if(count($product->images) > 1)
                                 <div class="thumbnail-gallery">
-                                    <div class="row g-2">
+                                    <div class="row g-0">
                                         @foreach($product->images as $index => $image)
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <img src="{{ $image['thumb'] }}" 
                                                      class="img-fluid thumbnail-image rounded {{ $index === 0 ? 'active' : '' }}" 
                                                      alt="{{ $image['alt'] }}"
@@ -356,14 +356,19 @@
 
 @section('styles')
 <style>
+    .main-image-container {
+        border: 1px solid #e9ecef;
+    }
+    
     .zoom-lens {
         position: absolute;
         border: 2px solid #007bff;
         border-radius: 50%;
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         pointer-events: none;
         background: rgba(0, 123, 255, 0.1);
+        backdrop-filter: blur(1px);
     }
     
     .zoom-result {
@@ -375,28 +380,42 @@
         border: 1px solid #ddd;
         border-radius: 8px;
         background: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         overflow: hidden;
         z-index: 1000;
     }
     
     .thumbnail-image {
         transition: all 0.3s ease;
+        border-radius: 6px;
     }
     
     .thumbnail-image:hover {
         transform: scale(1.05);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     
     .thumbnail-image.active {
         border-color: var(--bs-primary) !important;
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        transform: scale(1.02);
+    }
+    
+    .main-product-image {
+        transition: transform 0.3s ease;
+    }
+    
+    .main-product-image:hover {
+        transform: scale(1.02);
     }
     
     @media (max-width: 768px) {
         .zoom-result {
             display: none !important;
+        }
+        
+        .main-image-container {
+            height: 300px !important;
         }
     }
 </style>
@@ -448,41 +467,104 @@
         
         function initializeZoom() {
             const imgSrc = mainImage.attr('src');
+            const container = mainImage.parent();
+            const imgElement = mainImage[0];
+            
+            // Calculate actual image dimensions within the container
+            const containerWidth = container.width();
+            const containerHeight = container.height();
+            const imgNaturalWidth = imgElement.naturalWidth;
+            const imgNaturalHeight = imgElement.naturalHeight;
+            
+            // Calculate the displayed image size (object-fit: contain)
+            const containerRatio = containerWidth / containerHeight;
+            const imageRatio = imgNaturalWidth / imgNaturalHeight;
+            
+            let displayWidth, displayHeight;
+            if (imageRatio > containerRatio) {
+                displayWidth = containerWidth;
+                displayHeight = containerWidth / imageRatio;
+            } else {
+                displayHeight = containerHeight;
+                displayWidth = containerHeight * imageRatio;
+            }
+            
             zoomResult.css({
                 'background-image': 'url(' + imgSrc + ')',
-                'background-size': (mainImage.width() * 2) + 'px ' + (mainImage.height() * 2) + 'px',
+                'background-size': (displayWidth * 2.5) + 'px ' + (displayHeight * 2.5) + 'px',
                 'background-repeat': 'no-repeat'
             });
         }
         
         function updateZoom(e) {
-            const rect = mainImage[0].getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const container = mainImage.parent();
+            const containerRect = container[0].getBoundingClientRect();
+            const imgElement = mainImage[0];
             
-            // Position the lens
-            const lensX = x - zoomLens.width() / 2;
-            const lensY = y - zoomLens.height() / 2;
+            // Calculate actual image dimensions within the container
+            const containerWidth = container.width();
+            const containerHeight = container.height();
+            const imgNaturalWidth = imgElement.naturalWidth;
+            const imgNaturalHeight = imgElement.naturalHeight;
             
-            // Keep lens within image boundaries
-            const maxX = mainImage.width() - zoomLens.width();
-            const maxY = mainImage.height() - zoomLens.height();
+            // Calculate the displayed image size and position
+            const containerRatio = containerWidth / containerHeight;
+            const imageRatio = imgNaturalWidth / imgNaturalHeight;
             
-            const boundedX = Math.max(0, Math.min(lensX, maxX));
-            const boundedY = Math.max(0, Math.min(lensY, maxY));
+            let displayWidth, displayHeight, offsetX, offsetY;
+            if (imageRatio > containerRatio) {
+                displayWidth = containerWidth;
+                displayHeight = containerWidth / imageRatio;
+                offsetX = 0;
+                offsetY = (containerHeight - displayHeight) / 2;
+            } else {
+                displayHeight = containerHeight;
+                displayWidth = containerHeight * imageRatio;
+                offsetX = (containerWidth - displayWidth) / 2;
+                offsetY = 0;
+            }
             
-            zoomLens.css({
-                left: boundedX + 'px',
-                top: boundedY + 'px'
-            });
+            const x = e.clientX - containerRect.left - offsetX;
+            const y = e.clientY - containerRect.top - offsetY;
             
-            // Update zoom result background position
-            const bgX = -(boundedX * 2);
-            const bgY = -(boundedY * 2);
-            
-            zoomResult.css({
-                'background-position': bgX + 'px ' + bgY + 'px'
-            });
+            // Only show zoom if cursor is over the actual image
+            if (x >= 0 && x <= displayWidth && y >= 0 && y <= displayHeight) {
+                zoomLens.show();
+                zoomResult.show();
+                
+                // Position the lens
+                const lensX = x - zoomLens.width() / 2 + offsetX;
+                const lensY = y - zoomLens.height() / 2 + offsetY;
+                
+                // Keep lens within container boundaries
+                const maxX = containerWidth - zoomLens.width();
+                const maxY = containerHeight - zoomLens.height();
+                
+                const boundedX = Math.max(0, Math.min(lensX, maxX));
+                const boundedY = Math.max(0, Math.min(lensY, maxY));
+                
+                zoomLens.css({
+                    left: boundedX + 'px',
+                    top: boundedY + 'px'
+                });
+                
+                // Calculate the correct background position for zoom result
+                // Convert mouse position to percentage of displayed image
+                const xPercent = x / displayWidth;
+                const yPercent = y / displayHeight;
+                
+                // Calculate background position based on the zoomed image size
+                const zoomFactor = 2.5;
+                const bgX = -(xPercent * displayWidth * zoomFactor - zoomResult.width() / 2);
+                const bgY = -(yPercent * displayHeight * zoomFactor - zoomResult.height() / 2);
+                
+                zoomResult.css({
+                    'background-position': bgX + 'px ' + bgY + 'px'
+                });
+            } else {
+                zoomLens.hide();
+                zoomResult.hide();
+            }
         }
         
         // Modal zoom for mobile and click

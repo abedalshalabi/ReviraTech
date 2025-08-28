@@ -8,6 +8,7 @@ use Spatie\Translatable\HasTranslations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Enums\Fit;
 
 class Product extends Model implements HasMedia
 {
@@ -225,15 +226,13 @@ class Product extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(300)
-            ->height(300)
+            ->fit(Fit::Contain, 300, 300)
             ->sharpen(10)
             ->optimize()
             ->nonQueued();
 
         $this->addMediaConversion('preview')
-            ->width(800)
-            ->height(600)
+            ->fit(Fit::Contain, 800, 600)
             ->sharpen(10)
             ->optimize()
             ->nonQueued();
