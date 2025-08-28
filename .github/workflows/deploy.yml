@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./         # مجلد المشروع
-          server-dir: ./reviratech   # مسار الموقع على السيرفر
+          server-dir: ./reviratech/   # مسار الموقع على السيرفر
           protocol: ftps        # أو sftp حسب استضافتك
           state-name: .ftp-deploy-sync-state.json
 
